@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -13,16 +12,16 @@ public class TelemetryNode : ISerializable {
 	int id;
 	int link;
 	Vector3 position;
-	ExpandoObject info;
+	TelemetryInfo info;
 
-	public TelemetryNode (TelemetryNodeType nodeType, string name, Vector3 position, ExpandoObject info = null) {
+	public TelemetryNode (TelemetryNodeType nodeType, string name, Vector3 position, TelemetryInfo info = null) {
 		this.nodeType = nodeType;
 		this.id = -1;
 		this.link = -1;
 		this.name = name;
 		this.position = position;
 
-		this.info = info != null ? info : new ExpandoObject ();
+		this.info = info != null ? info : new TelemetryInfo ();
 
 		this.time = Time.realtimeSinceStartup;
 	}
@@ -31,7 +30,7 @@ public class TelemetryNode : ISerializable {
 	public string getName () { return this.name; }
 	public float getTime () { return this.time; }
 	public Vector3 getPosition () { return this.position; }
-	public ExpandoObject getInfo () { return this.info; }
+	public TelemetryInfo getInfo () { return this.info; }
 
 	public void setId (int nodeId) {
 		this.id = nodeId;
@@ -48,12 +47,24 @@ public class TelemetryNode : ISerializable {
 		info.AddValue ("Name", this.name, typeof (string));
 		info.AddValue ("Time", this.time, typeof (float));
 
-		dynamic position = new ExpandoObject ();
-		position.x = this.position.x;
-		position.y = this.position.y;
-		position.z = this.position.z;
-		info.AddValue ("Position", position, typeof (ExpandoObject));
+        TelemetryPosition positionData = new TelemetryPosition {
+            x = this.position.x,
+            y = this.position.y,
+            z = this.position.z
+        };
+        info.AddValue("Position", positionData, typeof(TelemetryPosition));
 
-		info.AddValue ("Info", this.info, typeof (ExpandoObject));
-	}
+        info.AddValue("Info", this.info, typeof(TelemetryInfo));
+    }
+}
+
+// Classe para representar os dados da posição
+public class TelemetryPosition {
+    public float x;
+    public float y;
+    public float z;
+}
+
+public class TelemetryInfo {
+    public string looking;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Telemetry {
 
-	static public int createSingleEvent (string name, Vector3 position, ExpandoObject extraInfo = null) {
+	static public int createSingleEvent (string name, Vector3 position, TelemetryInfo extraInfo = null) {
 		TelemetryNode newSingleEvent = new TelemetryNode (
 			TelemetryNodeType.SingleEvent,
 			name,
@@ -16,7 +16,7 @@ public class Telemetry {
 		return TelemetryCore.addNode (newSingleEvent);
 	}
 
-	static public int createChainEvent (string name, Vector3 position, int previousEventId = -1, ExpandoObject extraInfo = null) {
+	static public int createChainEvent (string name, Vector3 position, int previousEventId = -1, TelemetryInfo extraInfo = null) {
 		TelemetryNode newChainEvent = new TelemetryNode (
 			TelemetryNodeType.ChainEvent,
 			name,

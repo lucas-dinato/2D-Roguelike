@@ -2,7 +2,24 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/ZeppelinRemoteNotebooks" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/Collab/Merge" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/1f" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/5b" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/8e" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/14" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/19" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/67" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/73" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/a0" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/ae" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/b3" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/c9" />
+      <excludeFolder url="file://$MODULE_DIR$/Library/metadata/e3" />
+      <excludeFolder url="file://$MODULE_DIR$/Temp/ProcessJobs" />
+      <excludeFolder url="file://$MODULE_DIR$/Temp/StagingArea" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
