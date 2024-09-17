@@ -147,7 +147,7 @@ namespace Completed
 			{
 				//Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
 				SoundManager.instance.RandomizeSfx (moveSound1, moveSound2);
-				Telemetry.createSingleEvent ("Player Move", transform.position);
+//				Telemetry.createSingleEvent ("Player Move", transform.position);
 			}
 			
 			//Since the player has moved and lost food points, check if the game has ended.
@@ -197,6 +197,7 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two eating sounds to choose between to play the eating sound effect.
 				SoundManager.instance.RandomizeSfx (eatSound1, eatSound2);
+				Telemetry.createSingleEvent ("Food", transform.position);
 				
 				//Disable the food object the player collided with.
 				other.gameObject.SetActive (false);
@@ -213,6 +214,7 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two drinking sounds to choose between to play the drinking sound effect.
 				SoundManager.instance.RandomizeSfx (drinkSound1, drinkSound2);
+				Telemetry.createSingleEvent ("Drink", transform.position);
 				
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
