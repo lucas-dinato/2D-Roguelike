@@ -30,7 +30,7 @@ public class Telemetry_PlayerInfo : ISerializable {
 	}
 
 	public void GetObjectData(SerializationInfo info, StreamingContext context)	{
-		info.AddValue("Info", this.additionalInfo, typeof(Dictionary<string, object>));
-		info.AddValue("Rounds", this.rounds, typeof(List<Telemetry_RoundInfo>));
+		info.AddValue("info", this.additionalInfo, typeof(Dictionary<string, object>));
+		info.AddValue("rounds", this.rounds, typeof(List<Telemetry_RoundInfo>));
 	}
 }

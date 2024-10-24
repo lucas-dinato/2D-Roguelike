@@ -19,7 +19,7 @@ public class Telemetry_Synthesis : MonoBehaviour {
 
 	void Update () {
 		if(loadInfo) {
-			TelemetryCore.loadSessionsData("Users");
+			TelemetryCore.loadSessionsData("users");
 			loadInfo = false;
 		}
 		
@@ -46,10 +46,10 @@ public class Telemetry_Synthesis : MonoBehaviour {
 		totalSessions = info.Count;
 
 		foreach (var session in info) {
-			float sessionDuration = session.Value["Info"]["Session Duration"].Value<float>();
+			float sessionDuration = session.Value["info"]["sessionDuration"].Value<float>();
             averageSessionDuration += sessionDuration;
 
-			foreach (var round in session.Value["Rounds"]) {
+			foreach (var round in session.Value["rounds"]) {
 				avgRoundsPerSession += 1;
 			}
 		}
@@ -69,9 +69,9 @@ public class Telemetry_Synthesis : MonoBehaviour {
 
 	Vector3 positionVectorFromNode(JToken node) {
 		return new Vector3(
-				node["Position"]["x"].Value<float>(),
-				node["Position"]["y"].Value<float>(),
-				node["Position"]["z"].Value<float>()
+				node["position"]["x"].Value<float>(),
+				node["position"]["y"].Value<float>(),
+				node["position"]["z"].Value<float>()
 			);
 	}
 }

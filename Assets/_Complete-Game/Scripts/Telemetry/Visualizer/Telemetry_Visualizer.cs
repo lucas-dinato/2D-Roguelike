@@ -33,7 +33,7 @@ public class Telemetry_Visualizer : MonoBehaviour {
 		}
 
 		if (loadInfo) {
-			TelemetryCore.loadSessionsData ("Users");
+			TelemetryCore.loadSessionsData ("users");
 			loadInfo = false;
 			isReading = true;
 		}
@@ -57,10 +57,10 @@ public class Telemetry_Visualizer : MonoBehaviour {
 		JObject info = JObject.Parse (data);
 
 		foreach (var session in info) {
-			foreach (var round in session.Value["Rounds"]) {
-				string roundSceneName = round["Scene Name"].Value<string> ();
+			foreach (var round in session.Value["rounds"]) {
+				string roundSceneName = round["sceneName"].Value<string> ();
 				if (roundSceneName == this.sceneName) {
-					roundNodes.Add (round["Nodes"]);
+					roundNodes.Add (round["nodes"]);
 				}
 			}
 		}
@@ -77,8 +77,8 @@ public class Telemetry_Visualizer : MonoBehaviour {
 
 		foreach (var node in roundNodes[selectedRound]) {
 			Vector3 position = positionVectorFromNode (node);
-			string nodeType = node["Type"].Value<string> ();
-			int nodeID = node["ID"].Value<int> ();
+			string nodeType = node["type"].Value<string> ();
+			int nodeID = node["id"].Value<int> ();
 
 			GameObject instantiatedNode = instantiateNode (nodeType, nodeID, position);
 			instantiatedNode.transform.SetParent (nodesBag.transform);
@@ -86,7 +86,7 @@ public class Telemetry_Visualizer : MonoBehaviour {
 			Telemetry_NodeInfoHolder tooltip = instantiatedNode.GetComponent<Telemetry_NodeInfoHolder> ();
 			tooltip.setInfo (node);
 
-			int linkId = node["Link"].Value<int> ();
+			int linkId = node["link"].Value<int> ();
 			if (linkId != -1) {
 				//Renders link line between two nodes
 				LineRenderer lineRenderer = instantiatedNode.GetComponent<LineRenderer> ();
@@ -126,9 +126,9 @@ public class Telemetry_Visualizer : MonoBehaviour {
 
 	Vector3 positionVectorFromNode (JToken node) {
 		return new Vector3 (
-			node["Position"]["x"].Value<float> (),
-			node["Position"]["y"].Value<float> (),
-			node["Position"]["z"].Value<float> ()
+			node["position"]["x"].Value<float> (),
+			node["position"]["y"].Value<float> (),
+			node["position"]["z"].Value<float> ()
 		);
 	}
 }

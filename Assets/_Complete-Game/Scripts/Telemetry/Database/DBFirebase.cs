@@ -23,8 +23,8 @@ public class DBFirebase{
 
 		Debug.Log(dbUrl);
 
-		string key = this.reference.Child("Users").Push().Key;
-		this.reference.Child("Users").Child(key).SetRawJsonValueAsync(json);
+		string key = this.reference.Child("users").Push().Key;
+		this.reference.Child("users").Child(key).SetRawJsonValueAsync(json);
 	}
 
 	public void loadSessionsData(string key) {

@@ -41,20 +41,20 @@ public class TelemetryNode : ISerializable {
 	}
 
 	public void GetObjectData (SerializationInfo info, StreamingContext context) {
-		info.AddValue ("ID", this.id, typeof (int));
-		info.AddValue ("Type", this.nodeType.Value, typeof (string));
-		info.AddValue ("Link", this.link, typeof (int));
-		info.AddValue ("Name", this.name, typeof (string));
-		info.AddValue ("Time", this.time, typeof (float));
+		info.AddValue ("id", this.id, typeof (int));
+		info.AddValue ("type", this.nodeType.Value, typeof (string));
+		info.AddValue ("link", this.link, typeof (int));
+		info.AddValue ("name", this.name, typeof (string));
+		info.AddValue ("time", this.time, typeof (float));
 
         TelemetryPosition positionData = new TelemetryPosition {
             x = this.position.x,
             y = this.position.y,
             z = this.position.z
         };
-        info.AddValue("Position", positionData, typeof(TelemetryPosition));
+        info.AddValue("position", positionData, typeof(TelemetryPosition));
 
-        info.AddValue("Info", this.info, typeof(TelemetryInfo));
+        info.AddValue("info", this.info, typeof(TelemetryInfo));
     }
 }
 

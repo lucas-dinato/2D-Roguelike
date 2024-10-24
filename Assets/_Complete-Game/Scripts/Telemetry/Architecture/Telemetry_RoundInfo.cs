@@ -27,8 +27,8 @@ public class Telemetry_RoundInfo : ISerializable {
 	}
 
 	public void GetObjectData (SerializationInfo info, StreamingContext context) {
-		info.AddValue ("Scene Name", this.sceneName, typeof (string));
-		info.AddValue ("Duration", this.duration, typeof (float));
-		info.AddValue ("Nodes", this.nodes, typeof (List<TelemetryNode>));
+		info.AddValue ("sceneName", this.sceneName, typeof (string));
+		info.AddValue ("duration", this.duration, typeof (float));
+		info.AddValue ("nodes", this.nodes, typeof (List<TelemetryNode>));
 	}
 }

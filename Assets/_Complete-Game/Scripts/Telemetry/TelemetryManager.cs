@@ -47,7 +47,7 @@ public class TelemetryManager : MonoBehaviour {
 			TelemetryCore.endRound();
 		}
 
-		TelemetryCore.setPlayerInfo("Session Duration", Time.realtimeSinceStartup);
+		TelemetryCore.setPlayerInfo("sessionDuration", Time.realtimeSinceStartup);
 
 		if(isSavingActivated) {
 			DBHandler.saveSessionsData(JsonConvert.SerializeObject(TelemetryCore.getPlayerInfo()));
