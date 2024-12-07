@@ -66,5 +66,5 @@ public class TelemetryPosition {
 }
 
 public class TelemetryInfo {
-    public string looking;
+    public int playerLife;
 }

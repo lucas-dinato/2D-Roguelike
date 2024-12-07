@@ -147,8 +147,11 @@ namespace Completed
 			{
 				//Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
 				SoundManager.instance.RandomizeSfx (moveSound1, moveSound2);
-				Telemetry.createSingleEvent ("playerMove", transform.position);
 			}
+
+            TelemetryInfo telemetryInfo = new TelemetryInfo ();
+            telemetryInfo.playerLife = food;
+            Telemetry.createSingleEvent ("playerMove", transform.position, telemetryInfo);
 			
 			//Since the player has moved and lost food points, check if the game has ended.
 			CheckIfGameOver ();
@@ -170,7 +173,9 @@ namespace Completed
 			
 			//Set the attack trigger of the player's animation controller in order to play the player's attack animation.
 			animator.SetTrigger ("playerChop");
-			Telemetry.createSingleEvent ("wallDamage", transform.position);
+			TelemetryInfo telemetryInfo = new TelemetryInfo ();
+			telemetryInfo.playerLife = food;
+			Telemetry.createSingleEvent ("wallDamage", transform.position, telemetryInfo);
 		}
 		
 		
@@ -198,7 +203,9 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two eating sounds to choose between to play the eating sound effect.
 				SoundManager.instance.RandomizeSfx (eatSound1, eatSound2);
-				Telemetry.createSingleEvent ("food", transform.position);
+			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
+				telemetryInfo.playerLife = food;
+				Telemetry.createSingleEvent ("food", transform.position, telemetryInfo);
 				
 				//Disable the food object the player collided with.
 				other.gameObject.SetActive (false);
@@ -215,7 +222,9 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two drinking sounds to choose between to play the drinking sound effect.
 				SoundManager.instance.RandomizeSfx (drinkSound1, drinkSound2);
-				Telemetry.createSingleEvent ("soda", transform.position);
+			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
+				telemetryInfo.playerLife = food;
+				Telemetry.createSingleEvent ("soda", transform.position, telemetryInfo);
 				
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
@@ -244,6 +253,10 @@ namespace Completed
 			
 			//Update the food display with the new total.
 			foodText.text = "-"+ loss + " Food: " + food;
+
+            TelemetryInfo telemetryInfo = new TelemetryInfo ();
+            telemetryInfo.playerLife = food;
+			Telemetry.createSingleEvent ("enemyAttack" + loss, transform.position, telemetryInfo);
 			
 			//Check to see if game has ended.
 			CheckIfGameOver ();
@@ -258,7 +271,9 @@ namespace Completed
 			{
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
-				Telemetry.createSingleEvent ("gameOver", transform.position);
+			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
+				telemetryInfo.playerLife = food;
+				Telemetry.createSingleEvent ("gameOver", transform.position, telemetryInfo);
 				
 				//Stop the background music.
 				SoundManager.instance.musicSource.Stop();
