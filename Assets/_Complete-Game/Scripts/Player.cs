@@ -39,6 +39,11 @@ namespace Completed
 			
 			//Set the foodText to reflect the current player food total.
 			foodText.text = "Food: " + food;
+
+			//Telemetry
+            TelemetryInfo telemetryInfo = new TelemetryInfo ();
+            telemetryInfo.playerLife = food;
+            Telemetry.createSingleEvent ("start", transform.position, telemetryInfo);
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -149,6 +154,7 @@ namespace Completed
 				SoundManager.instance.RandomizeSfx (moveSound1, moveSound2);
 			}
 
+            //Telemetry
             TelemetryInfo telemetryInfo = new TelemetryInfo ();
             telemetryInfo.playerLife = food;
             Telemetry.createSingleEvent ("playerMove", transform.position, telemetryInfo);
@@ -173,6 +179,8 @@ namespace Completed
 			
 			//Set the attack trigger of the player's animation controller in order to play the player's attack animation.
 			animator.SetTrigger ("playerChop");
+
+            //Telemetry
 			TelemetryInfo telemetryInfo = new TelemetryInfo ();
 			telemetryInfo.playerLife = food;
 			Telemetry.createSingleEvent ("wallDamage", transform.position, telemetryInfo);
@@ -203,6 +211,8 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two eating sounds to choose between to play the eating sound effect.
 				SoundManager.instance.RandomizeSfx (eatSound1, eatSound2);
+
+				//Telemetry
 			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
 				telemetryInfo.playerLife = food;
 				Telemetry.createSingleEvent ("food", transform.position, telemetryInfo);
@@ -222,6 +232,8 @@ namespace Completed
 				
 				//Call the RandomizeSfx function of SoundManager and pass in two drinking sounds to choose between to play the drinking sound effect.
 				SoundManager.instance.RandomizeSfx (drinkSound1, drinkSound2);
+
+				//Telemetry
 			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
 				telemetryInfo.playerLife = food;
 				Telemetry.createSingleEvent ("soda", transform.position, telemetryInfo);
@@ -254,6 +266,7 @@ namespace Completed
 			//Update the food display with the new total.
 			foodText.text = "-"+ loss + " Food: " + food;
 
+            //Telemetry
             TelemetryInfo telemetryInfo = new TelemetryInfo ();
             telemetryInfo.playerLife = food;
 			Telemetry.createSingleEvent ("enemyAttack" + loss, transform.position, telemetryInfo);
@@ -271,6 +284,8 @@ namespace Completed
 			{
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
+
+				//Telemetry
 			    TelemetryInfo telemetryInfo = new TelemetryInfo ();
 				telemetryInfo.playerLife = food;
 				Telemetry.createSingleEvent ("gameOver", transform.position, telemetryInfo);
