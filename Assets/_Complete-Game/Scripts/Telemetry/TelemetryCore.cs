@@ -8,7 +8,7 @@ public class TelemetryCore {
 	static Telemetry_PlayerInfo playerInfo = new Telemetry_PlayerInfo();
 	static string sessionsData = null;
 	
-	static Telemetry_RoundInfo currentRound = null;
+	static Telemetry_RoundInfo currentRound = new Telemetry_RoundInfo("_Complete-Game");
 	static float roundInitialTime = 0f;
 
 	public static Telemetry_PlayerInfo getPlayerInfo() {
@@ -21,6 +21,10 @@ public class TelemetryCore {
 	}
 
 	public static int addNode(TelemetryNode node){
+        if (currentRound == null) {
+            newRound("_Complete-Game"); // Inicializa com um nome de cena padrão
+        }
+
 		return currentRound.addNode(node);
 	}
 
